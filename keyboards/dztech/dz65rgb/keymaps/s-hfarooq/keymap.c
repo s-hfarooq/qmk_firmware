@@ -5,28 +5,28 @@ enum layers_user {
     _AD
 };
 
-enum keycodes_user {
-    _BASEEF = SAFE_RANGE,
-    _KITTEF
-};
+// enum keycodes_user {
+//     _BASEEF = SAFE_RANGE,
+//     _KITTEF
+// };
 
-int selected_mode_user = RGB_MATRIX_CUSTOM_base_effect; // for layer_state_set_user()
-bool process_record_user(uint16_t keycode, keyrecord_t * record) {
-    switch (keycode) {
-        case _BASEEF:
-            if (record->event.pressed) {
-                selected_mode_user = RGB_MATRIX_CUSTOM_base_effect;
-            }
-            return false;
-        case _KITTEF:
-            if (record->event.pressed) {
-                selected_mode_user = RGB_MATRIX_CUSTOM_kitt_effect;
-            }
-            return false;
-        default:
-            return true;
-    }
-}
+// int selected_mode_user = RGB_MATRIX_CUSTOM_base_effect; // for layer_state_set_user()
+// bool process_record_user(uint16_t keycode, keyrecord_t * record) {
+//     switch (keycode) {
+//         case _BASEEF:
+//             if (record->event.pressed) {
+//                 selected_mode_user = RGB_MATRIX_CUSTOM_base_effect;
+//             }
+//             return false;
+//         case _KITTEF:
+//             if (record->event.pressed) {
+//                 selected_mode_user = RGB_MATRIX_CUSTOM_kitt_effect;
+//             }
+//             return false;
+//         default:
+//             return true;
+//     }
+// }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_65_ansi(
@@ -45,19 +45,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-        case _QWERTY:
-            rgb_matrix_mode(selected_mode_user);
-            break;
-        case _AD:
-            if (selected_mode_user == RGB_MATRIX_CUSTOM_base_effect) {
-                rgb_matrix_mode(RGB_MATRIX_CUSTOM_base_ad_effect);
-            } else {
-                rgb_matrix_mode(selected_mode_user);
-            }
-            break;
-    }
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     switch (get_highest_layer(state)) {
+//         case _QWERTY:
+//             rgb_matrix_mode(selected_mode_user);
+//             break;
+//         case _AD:
+//             if (selected_mode_user == RGB_MATRIX_CUSTOM_base_effect) {
+//                 rgb_matrix_mode(RGB_MATRIX_CUSTOM_base_ad_effect);
+//             } else {
+//                 rgb_matrix_mode(selected_mode_user);
+//             }
+//             break;
+//     }
 
-    return state;
-}
+//     return state;
+// }
